@@ -42,9 +42,49 @@ Output: 0
 Explanation: There are no 'X's in s to convert.
 
 Intuition:
+
 a. Initialise a variable move for counting the number of steps to convert the given string.
+
 b. If the character is X then we can increment the move by 1 and directly Skip the next 3 characters by doing i += 3.
+
 c. If the current character s[i] is 'O', simply move to the next character by doing i += 1.
 # Algorithm
-1. 
+1. Initialize a variable moves = 0 to keep track of the minimum number of operations needed.
+2. Start iterating through the string from index i = 0.
+3. If the current character s[i] is 'X', then: Increment moves by 1 (because we need to perform an operation here). Skip the next 3 characters by doing i += 3 (since one move converts the current 'X' and the next two characters to 'O').
+4. If the current character s[i] is 'O', simply move to the next character by doing i += 1.
+5. Continue until you reach the end of the string.
+6. Return the value of moves as the result.
+# Code
+class Solution:
 
+    def minimumMoves(self, s: str) -> int:
+        moves=0
+        i=0
+        while i<len(s):
+            if s[i]=='X':
+                moves+=1
+                i+=3
+            else:
+                i+=1
+        return moves
+# Complexity
+Time Complexity:
+
+We are scanning the string once with index i moving either by +1 or +3.
+
+In the worst case, every character is checked exactly once.
+
+So, the complexity is:
+
+O(n)
+
+where n = length of the string.
+
+Space Complexity:
+
+We are only using a few variables (moves, i), no extra data structures.
+
+So, the complexity is:
+
+O(1)
